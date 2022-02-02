@@ -27,5 +27,5 @@ Installing a simple toolchain is as easy as running the following:
 
 ```bash
 brew tap willmac16/oss-fpga
-brew install --HEAD project-trellis yosys nextpnr-trellis
+brew install --HEAD project-trellis yosys nextpnr-ecp5
 ```
