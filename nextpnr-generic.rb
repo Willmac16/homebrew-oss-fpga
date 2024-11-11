@@ -6,13 +6,18 @@ class NextpnrGeneric < Formula
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "eigen" => :build
-  depends_on "python@3.8"
+  depends_on "boost-python3" => :build
   depends_on "boost"
-  depends_on "boost-python3"
-  depends_on "qt5"
+  depends_on "qt@5" => :optional
 
   def install
-    system "cmake", "-DARCH=generic", ".", *std_cmake_args, "-DBUILD_TESTS=OFF"
+    gui_string = ""
+
+    if build.with? "qt@5"
+      gui_string = "-DBUILD_GUI=ON"
+    end
+
+    system "cmake", "-DARCH=generic", ".", *std_cmake_args, "-DBUILD_TESTS=OFF", gui_string
     system "make", "install"
   end
 
