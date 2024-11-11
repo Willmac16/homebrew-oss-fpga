@@ -15,7 +15,7 @@ Installing a simple toolchain is as easy as running the following:
 
 ```bash
 brew tap willmac16/oss-fpga
-brew install --HEAD icestorm yosys nextpnr-ice40
+brew install --HEAD nextpnr-ice40
 ```
 
 ## Getting Started -- ecp5
@@ -27,5 +27,11 @@ Installing a simple toolchain is as easy as running the following:
 
 ```bash
 brew tap willmac16/oss-fpga
-brew install --HEAD project-trellis yosys nextpnr-ecp5
+brew install --HEAD nextpnr-ecp5
+```
+
+## Installing all `nextpnr` variants
+```bash
+brew tap willmac16/oss-fpga
+brew install --head nextpnr-ice40 nextpnr-ecp5 nextpnr-generic
 ```
