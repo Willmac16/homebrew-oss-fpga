@@ -13,9 +13,9 @@ the `icestorm`, `yosys`, and `nextpnr` tools.
 
 Installing a simple toolchain is as easy as running the following:
 
-```
-$ brew tap ktemkin/oss-fpga
-$ brew install --HEAD icestorm yosys nextpnr-ice40
+```bash
+brew tap willmac16/oss-fpga
+brew install --HEAD icestorm yosys nextpnr-ice40
 ```
 
 ## Getting Started -- ecp5
@@ -25,7 +25,7 @@ the `project-trellis`, `yosys`, and `nextpnr` tools.
 
 Installing a simple toolchain is as easy as running the following:
 
-```
-$ brew tap ktemkin/oss-fpga
-$ brew install --HEAD project-trellis yosys nextpnr-trellis
+```bash
+brew tap willmac16/oss-fpga
+brew install --HEAD project-trellis yosys nextpnr-trellis
 ```
