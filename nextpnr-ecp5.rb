@@ -22,7 +22,8 @@ class NextpnrEcp5 < Formula
     end
 
     # clang-17 macos fails to handle #embed when it uses clang++
-    inreplace "cmake/BBAsm.cmake", ".cc", ".c"
+	  # convince bbasm to use cstrings
+    inreplace "CMakeLists.txt", "check_cxx_compiler_hash_embed(HAS_HASH_EMBED CXX_FLAGS_HASH_EMBED)", "set(HAS_HASH_EMBED FALSE)"
 
     system "cmake", "-DARCH=ecp5", "-DTRELLIS_INSTALL_PREFIX=#{HOMEBREW_PREFIX}", \
       ".", *std_cmake_args, "-DBoost_NO_BOOST_CMAKE=on", "-DBUILD_TESTS=OFF", gui_string, "-B build"
