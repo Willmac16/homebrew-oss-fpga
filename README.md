@@ -28,3 +28,19 @@ brew install --HEAD nextpnr-ecp5
 brew tap willmac16/oss-fpga
 brew install --head nextpnr-ice40 nextpnr-ecp5 nextpnr-generic
 ```
+
+## Testing this repo (mostly a note to self)
+locate to the local copy
+```bash
+cd $(basename $(brew edit --print-path nextpnr-generic))
+```
+or edit one formula
+```bash
+brew edit nextpnr-ice40
+```
+
+then run a fresh install of all
+```bash
+brew uninstall -f nextpnr-ice40 nextpnr-ecp5 nextpnr-generic
+HOMEBREW_NO_INSTALL_FROM_API=1 brew install --HEAD nextpnr-ice40 nextpnr-ecp5 nextpnr-generic
+```

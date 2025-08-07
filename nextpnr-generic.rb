@@ -6,8 +6,8 @@ class NextpnrGeneric < Formula
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "eigen" => :build
-  depends_on "boost-python3" => :build
   depends_on "boost"
+  depends_on "boost-python3" => :build
   depends_on "qt@5" => :optional
 
   def install
@@ -21,5 +21,4 @@ class NextpnrGeneric < Formula
     system "cmake --build build"
     system "cmake --install build"
   end
-
 end

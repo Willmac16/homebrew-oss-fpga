@@ -3,7 +3,6 @@ class NextpnrIce40 < Formula
   homepage "https://github.com/YosysHQ/nextpnr"
   head "https://github.com/YosysHQ/nextpnr.git"
 
-
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "eigen" => :build
@@ -24,10 +23,9 @@ class NextpnrIce40 < Formula
     # clang-17 macos fails to handle #embed when it uses clang++
     inreplace "cmake/BBAsm.cmake", ".cc", ".c"
 
-    system "cmake", "-DARCH=ice40", ".", *std_cmake_args, "-DBoost_NO_BOOST_CMAKE=on", "-DBUILD_TESTS=OFF", "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox", gui_string, "-B build"
+    system "cmake", "-DARCH=ice40", "-DICESTORM_INSTALL_PREFIX=#{HOMEBREW_PREFIX}", \
+      ".", *std_cmake_args, "-DBoost_NO_BOOST_CMAKE=on", "-DBUILD_TESTS=OFF", gui_string, "-B build"
     system "cmake --build build"
     system "cmake --install build"
-
   end
-
 end
