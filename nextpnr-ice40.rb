@@ -8,9 +8,11 @@ class NextpnrIce40 < Formula
   depends_on "pkg-config" => :build
   depends_on "eigen" => :build
   depends_on "boost"
-  depends_on "boost-python3"
-  depends_on "icestorm"
+  depends_on "boost-python3" => :build
   depends_on "qt@5" => :optional
+
+  # In addition to the generic requirements
+  depends_on "icestorm"
 
   def install
     gui_string = ""
@@ -19,8 +21,13 @@ class NextpnrIce40 < Formula
       gui_string = "-DBUILD_GUI=ON"
     end
 
-    system "cmake", "-DARCH=ice40", ".", *std_cmake_args, "-DBoost_NO_BOOST_CMAKE=on", "-DBUILD_TESTS=OFF", "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox", gui_string
-    system "make", "install"
+    # clang-17 macos fails to handle #embed when it uses clang++
+    inreplace "cmake/BBAsm.cmake", ".cc", ".c"
+
+    system "cmake", "-DARCH=ice40", ".", *std_cmake_args, "-DBoost_NO_BOOST_CMAKE=on", "-DBUILD_TESTS=OFF", "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox", gui_string, "-B build"
+    system "cmake --build build"
+    system "cmake --install build"
+
   end
 
 end

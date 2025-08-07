@@ -17,8 +17,9 @@ class NextpnrGeneric < Formula
       gui_string = "-DBUILD_GUI=ON"
     end
 
-    system "cmake", "-DARCH=generic", ".", *std_cmake_args, "-DBUILD_TESTS=OFF", gui_string
-    system "make", "install"
+    system "cmake", "-DARCH=generic", ".", *std_cmake_args, "-DBUILD_TESTS=OFF", gui_string, "-B build"
+    system "cmake --build build"
+    system "cmake --install build"
   end
 
 end
